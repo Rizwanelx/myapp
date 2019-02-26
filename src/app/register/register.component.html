@@ -1,0 +1,48 @@
+<h4>Register</h4>
+<form [formGroup]="regForm" (ngSubmit)="onRegister()">
+    <label>
+        DealerId: :
+        <input type="number" formControlName="DealerId">
+      </label><br>
+    <label>
+        Name:
+        <input type="text" formControlName="Name">
+      </label>
+      <br>
+  <label>
+    Email:
+    <input type="email" formControlName="Email">
+  </label>
+  <br>
+  <label>
+        Phone No:
+      <input type="text" formControlName="Phone">
+  </label>
+  <br>
+  <label>
+      Country Name:
+        <input type="text" formControlName="Country">
+  </label>
+  <br>
+  <label>
+      Reserve1:
+          <input type="number" formControlName="Reserve1">
+  </label>
+  <br>
+  <label>
+      Reserve2:
+          <input type="text" formControlName="Reserve2">
+  </label>
+  <br>
+  <label>
+      Reserve3:
+          <input type="number" formControlName="Reserve3">
+  </label><br>
+  <label>
+      Verified:
+          <input type="number" formControlName="Verified">
+  </label>
+<br>
+  <br>
+<button type="submit">Register</button>
+</form>
