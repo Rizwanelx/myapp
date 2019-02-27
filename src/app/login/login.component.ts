@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../service/login.service';
 import { GlobalService } from '../service/global.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -11,10 +12,9 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loading : boolean;
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    Email: new FormControl('' , [Validators.required, Validators.email]),
+    Password: new FormControl('',  [Validators.required, Validators.minLength(5)]),
   });
 
   constructor(
@@ -28,18 +28,19 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
   }
   onSubmit() {
-    // TODO: Use EventEmitter with form value
+    if (this.loginForm.valid){
     this.service.login(this.loginForm.value).subscribe(
       response => {
-        this.loading = true;
         localStorage.setItem('LoggedUser',JSON.stringify(response));
         localStorage.setItem('isLoggedIn',"true");
         this.router.navigate(['/home']);
       },
       error => {
-        this.loading = false;
         console.log('error', error);
       }
     )
+  }else{
+    alert('Form is invalied!');
   }
+}
 }

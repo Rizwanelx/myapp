@@ -2,13 +2,14 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <label>
     Email:
-    <input type="email" formControlName="email">
+    <input type="email" formControlName="Email" required>
   </label>
 <br> <br>
   <label>
     Password:
-    <input type="password" formControlName="password">
-  </label><br><br>
-<button type="submit" >Login</button>
+    <input type="password" formControlName="Password" required> 
+  </label>
+  <br><br>
+<button type="submit"  >Login</button>
 </form>
 <h5> Not yet account<a routerLink="/register" >Register here </a></h5>

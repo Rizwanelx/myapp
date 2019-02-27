@@ -16,13 +16,13 @@ export class RestService {
     for(let key in params){
       args.push(key+"="+params[key]);
     }
-    return this.http.get<any>(this.baseUrl+"/"+endpoint+"?"+args.join("&"));
+    return this.http.get<any>(this.baseUrl+"/"+endpoint+"?"+args.join("%"));
   }
 
   post(endpoint,params:any){
     return this.http.post<any>(this.baseUrl+"/"+endpoint,params);
   }
-  
+
   Get(endpoint,params:any){
     let args:any[]= [];
     for(let key in params){
